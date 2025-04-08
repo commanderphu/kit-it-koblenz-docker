@@ -1,0 +1,35 @@
+version: "3.8"
+
+networks:
+  web:
+    external: false
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - web
+    depends_on:
+      - kit-website
+
+  kit-website:
+    image: commandercentrale/kit-website:latest
+    container_name: kit-website
+    restart: unless-stopped
+    expose:
+      - "3000"
+    networks:
+      - web

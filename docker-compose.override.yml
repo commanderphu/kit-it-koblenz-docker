@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  kit-website:
+    environment:
+      - NODE_ENV=production
+
+  caddy:
+    environment:
+      - ACME_AGREE=true

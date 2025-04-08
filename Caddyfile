@@ -1,0 +1,19 @@
+kit-it-koblenz.de {
+    reverse_proxy kit-website:3000
+}
+
+mail.kit-it-koblenz.de {
+    reverse_proxy mailcow-nginx-mailcow:80
+}
+
+autodiscover.kit-it-koblenz.de {
+    reverse_proxy mailcow-nginx-mailcow:80
+}
+
+autoconfig.kit-it-koblenz.de {
+    reverse_proxy mailcow-nginx-mailcow:80
+}
+
+webmail.kit-it-koblenz.de {
+    reverse_proxy mailcow-nginx-mailcow:80
+}
