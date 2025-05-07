@@ -15,30 +15,6 @@ chmod +x setup.sh
 ./setup.sh
 ```
 
-## 📨 Mailcow
-
-Mailcow separat installieren:
-
-```bash
-git clone https://github.com/mailcow/mailcow-dockerized
-cd mailcow-dockerized
-```
-
-Füge in deren `docker-compose.override.yml` folgendes ein:
-
-```yaml
-networks:
-  web:
-    external: true
-```
-
-Dann in jedem Mailcow-Service:
-
-```yaml
-networks:
-  - mailcow-network
-  - web
-```
 
 Danach starten:
 
