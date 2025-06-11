@@ -2,5 +2,5 @@ kit-it-koblenz.de {
     reverse_proxy kit-website:3000
 }
 belabox.einfachnurphu.io {
-    reverse_proxy belabox:8181
+    reverse_proxy /stats belabox:8181
 }
