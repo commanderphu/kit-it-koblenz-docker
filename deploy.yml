@@ -14,15 +14,11 @@ jobs:
       - name: Deploy docker Stack
         run: |
           echo "Deploying Docker stack..."
-<<<<<<< HEAD
           docker stack deploy -c docker-compose.yml kit-website-belabox
           if [ $? -ne 0 ]; then
             echo "Docker stack deployment failed!"
             exit 1
           fi
-=======
-          docker stack deploy -c docker-compose.yml kit-website
->>>>>>> refs/remotes/origin/master
           echo "Docker stack deployed successfully."
       - name: Wait for 30 seconds
         run: |
@@ -38,8 +34,3 @@ jobs:
             echo "Website is down!"
             exit 1
           fi
-<<<<<<< HEAD
-=======
-
-test
->>>>>>> refs/remotes/origin/master
