@@ -1,0 +1,36 @@
+name: Docker Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy docker Stack
+        run: |
+          echo "Deploying Docker stack..."
+          docker stack deploy -c docker-compose.yml kit-website-belabox
+          if [ $? -ne 0 ]; then
+            echo "Docker stack deployment failed!"
+            exit 1
+          fi
+          echo "Docker stack deployed successfully."
+      - name: Wait for 30 seconds
+        run: |
+          echo "Waiting for 30 seconds..."
+          sleep 30
+          echo "Waited for 30 seconds."
+      - name: Check if the website is up
+        run: |
+          echo "Checking if the website is up..."
+          if curl -s --head  --request GET http://localhost:3000| grep "200 OK" > /dev/null; then 
+            echo "Website is up!"
+          else
+            echo "Website is down!"
+            exit 1
+          fi

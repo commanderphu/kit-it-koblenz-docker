@@ -33,3 +33,15 @@ services:
       - "3000"
     networks:
       - web
+  belabox:
+    image: kezzkezz/belabox:latest
+    container_name: belabox
+    restart: always
+    ports:
+      - "5000:5000/udp"
+      - "8181:8181"
+      - "8282:8282/udp"
+    networks:
+      - web
+
+  
